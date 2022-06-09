@@ -5,8 +5,9 @@ const db = knex(config.development); */
 const db = require("./dbConfig");
 
 async function addUser(user) {
-	await db("users").insert(user);
-	return db("users").where({ username: user.username });
+	/* await db("users").insert(user);
+    return db("users").where({ username: user.username }); */
+	return await db("users").insert(user, ["id", "username", "email"]);
 }
 
 function getAllUsers() {
